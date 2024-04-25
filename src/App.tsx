@@ -1,24 +1,16 @@
+// src/App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+import { RootState } from './app/store';
+import VideoPlayer from './components/VideoPlayer';
 
 function App() {
+  const videoURL = useSelector((state: RootState) => state.video.url);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Streaming Live</h1>
+      <VideoPlayer src={videoURL} controls={true} />
     </div>
   );
 }
