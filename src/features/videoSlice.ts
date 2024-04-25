@@ -1,19 +1,15 @@
 // src/features/videoSlice.ts
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-interface VideoState {
-  url: string;
-}
-
-const initialState: VideoState = {
-  url: '', // URL iniziale vuoto o un valore predefinito
+const initialState = {
+  url: ''
 };
 
 const videoSlice = createSlice({
   name: 'video',
   initialState,
   reducers: {
-    setVideoURL(state, action: PayloadAction<string>) {
+    setVideoURL(state, action) {
       state.url = action.payload;
     },
   },

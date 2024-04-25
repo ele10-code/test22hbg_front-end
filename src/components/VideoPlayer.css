@@ -1,0 +1,10 @@
+/* src/components/VideoPlayer.css */
+.video-normal {
+  width: 50%; /* Per la modalità normale */
+  height: auto; /* Mantiene il rapporto aspetto */
+}
+
+.video-fullscreen {
+  width: 100%; /* Per la modalità ingrandita */
+  height: auto; /* Mantiene il rapporto aspetto */
+}

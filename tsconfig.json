@@ -18,7 +18,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "./", // Imposta la directory radice come base per i percorsi relativi
+    "paths": {
+      "*": ["src/*"] // Ricerca di moduli sotto la directory src
+    }
   },
   "include": [
     "src"

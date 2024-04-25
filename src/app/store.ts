@@ -1,12 +1,15 @@
 // src/app/store.ts
-import { configureStore } from '@reduxjs/toolkit'
-import videoReducer from '../features/videoSlice'
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import searchReducer from '../features/searchSlice';
+import videoReducer from '../features/videoSlice';
 
-export const store = configureStore({
-  reducer: {
-    video: videoReducer
-  },
+export const rootReducer = combineReducers({
+  search: searchReducer,
+  video: videoReducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
+
+export const store = configureStore({
+  reducer: rootReducer,
+});
