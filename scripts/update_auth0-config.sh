@@ -17,4 +17,9 @@ curl -X PATCH https://dev-elena.us.auth0.com/api/v2/clients/u9GF8brwqxyI3LTmAUjv
      -d "{\"callbacks\": [\"$NGROK_URL/callback\"], \"allowed_logout_urls\": [\"$NGROK_URL/logout\"]}"
 
 # Riavvia l'app React se necessario
-# ...
+if [ -f ./.env.development.local ]; then
+  echo "Riavvio dell'app React..."
+  npm start
+fi
+
+echo "URL ngrok aggiornato in .env: $NGROK_URL"
