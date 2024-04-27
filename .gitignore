@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/scripts/update_auth0-config.sh
 
 # testing
 /coverage
