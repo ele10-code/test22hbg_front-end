@@ -24,3 +24,21 @@
   width: 100%;
   height: 100%;
 }
+/* Adatta i tuoi stili per schermi fino a 768px di larghezza */
+@media (max-width: 768px) {
+  .player-wrapper {
+    width: 100%; /* Usa tutta la larghezza disponibile */
+    height: auto; /* L'altezza si adatta al contenuto */
+    border-radius: 0; /* Su dispositivi mobile i bordi arrotondati potrebbero non essere necessari */
+  }
+
+  /* Potresti voler nascondere l'ombra o ridurla su dispositivi mobile */
+  .player-wrapper {
+    box-shadow: none;
+  }
+}
+
+/*per dispositivi ancora più piccoli, come i telefoni */
+@media (max-width: 480px) {
+  /* Qui puoi fare ulteriori regolazioni specifiche per dispositivi molto piccoli */
+}

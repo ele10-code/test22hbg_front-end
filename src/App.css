@@ -105,14 +105,83 @@ html, body {
   font-style: italic;
 }
 
+/* Stili aggiuntivi per il form */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+  padding: 40px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #333;
+  background: #ffffff;
+  background: linear-gradient(to top right, #ffffff, #eeeeff);
+}
+
+.form-title {
+  margin-bottom: 1.5rem;
+  color: #5a5a5a;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.form-label {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-input {
+  padding: 1px 25px;
+  margin-bottom: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  transition: border 0.5s;
+}
+
+.form-input:focus {
+  border-color: #4e54c8;
+  outline: none;
+}
+
+.form-submit {
+  padding: 10px 15px;
+  color: white;
+  background-color: #4e54c8;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-submit:hover {
+  background-color: #3b41a4;
+}
+.video-page-container {
+  display: flex;
+  flex-direction: row; /* Disponi gli elementi in riga */
+  justify-content: space-between; /* Separa gli elementi */
+  align-items: start; /* Allinea gli elementi all'inizio del contenitore */
+  padding: 20px; /* Aggiungi spazio intorno */
+}
+
+
+
 /* Aggiungi stili per altri stati o dispositivi se necessario */
+/* Stili reattivi per mobile */
 @media (max-width: 768px) {
   .app-container {
-    flex-direction: column;
+    flex-direction: column; /* Impila verticalmente su dispositivi mobili */
+    padding: 20px; /* Ulteriore riduzione del padding per mobile */
   }
   
   .video-container, .search-box {
-    width: 90%;
-    margin: 10px 0;
+    width: 100%; /* Usa tutta la larghezza disponibile per dispositivi mobili */
+    margin: 20px 0; /* Riduci il margine tra gli elementi */
+  }
+  .video-page-container {
+    flex-direction: column; /* Disponi gli elementi in colonna su schermi più piccoli */
   }
 }

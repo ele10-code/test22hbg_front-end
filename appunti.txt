@@ -1,0 +1,22 @@
+npm install axios
+Per chiamare un'API e ottenere i dati necessari per la riproduzione del flusso live streaming e per la funzionalità di ricerca, dovresti considerare di utilizzare la libreria Axios o l'API Fetch nativa di JavaScript. 
+
+AuthContext e un AuthProvider in React, che sono usati per gestire lo stato dell'autenticazione attraverso l'intera applicazione. 
+Questi componenti permettono di mantenere e accedere allo stato di autenticazione (ad esempio, un token JWT) in maniera centralizzata e accessibile da qualsiasi componente all'interno dell'albero dei componenti di React che necessita di tale informazione.
+
+- Auth0
+
+Per integrare Auth0 per l'autenticazione degli utenti nella tua applicazione React, dovrai seguire diversi passaggi per configurare l'SDK React di Auth0. Innanzitutto, dovrai installare l'SDK React di Auth0 nella directory del tuo progetto utilizzando il comando npm install @auth0/auth0-react.
+
+Dopo aver installato l'SDK, dovrai configurare il componente Auth0Provider per avvolgere il componente radice della tua applicazione. Ciò richiede di specificare il domain e clientId che puoi ottenere dalle impostazioni della tua applicazione Auth0 sul sito web di Auth0.
+
+Dovresti anche impostare le variabili d'ambiente nel tuo file .env per REACT_APP_AUTH0_DOMAIN e REACT_APP_AUTH0_CLIENT_ID con i valori corrispondenti dalle impostazioni della tua applicazione Auth0.
+
+Per scopi di routing e per gestire lo stato dell'autenticazione, puoi creare un componente di ordine superiore denominato Auth0ProviderWithHistory. Questo componente userà l'hook useHistory di React Router per gestire la cronologia delle sessioni e per navigare l'utente dopo gli eventi di autenticazione.
+
+Per facilitare la funzionalità di login e logout, utilizzerai l'hook useAuth0() fornito dall'SDK, che offre metodi come loginWithRedirect() e logout(). Ad esempio, un componente pulsante di login utilizzerà loginWithRedirect() per inviare l'utente alla pagina di login universale di Auth0.
+
+Infine, per visualizzare le informazioni del profilo utente dopo che hanno effettuato l'accesso, puoi utilizzare la proprietà user esposta da useAuth0() per accedere ai dettagli dell'utente loggato, come il loro nome e immagine del profilo.
+
+
+npm install -g ngrok
