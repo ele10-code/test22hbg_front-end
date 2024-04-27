@@ -48,7 +48,7 @@ ref={mediaRef}
 src={src}
 width="100%"
 onTimeUpdate={handleTimeUpdate}
-controls // Questo mostra i controlli nativi del browser, puoi rimuoverlo se preferisci controlli completamente personalizzati
+controls // Questo mostra i controlli nativi del browser
 >
 Il tuo browser non supporta il tag video.
 </video>

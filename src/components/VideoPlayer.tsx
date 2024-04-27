@@ -1,35 +1,40 @@
-// src/components/VideoPlayer.tsx
-import React, { FC, useRef } from 'react';
-
-// Definisco l'interfaccia delle proprietà del componente VideoPlayer
+ // src/components/VideoPlayer.tsx
+// Importazione delle librerie necessarie
+import React, { FC } from 'react';
+import ReactPlayer from 'react-player';
+import './VideoPlayer.css'; // Importazione del file CSS per lo stile del componente
+ 
+// Definizione delle proprietà del componente VideoPlayer
 interface VideoPlayerProps {
-  src: string;
-  controls: boolean;
+  url: string;  // L'URL completo del video
 }
- // Definisco il componente VideoPlayer come una funzione di React che accetta le proprietà definite nell'interfaccia VideoPlayerProps
-const VideoPlayer: FC<VideoPlayerProps> = ({ src, controls }) => {
-  const videoRef = useRef<HTMLVideoElement>(null); // Creo un riferimento al tag video per accedere al suo stato e ai suoi metodi
-
-  const handleFullScreen = () => { // Definisco una funzione per attivare la modalità a schermo intero
-  const videoElement = videoRef.current; // Ottengo il riferimento al tag video
-  if (videoElement && videoElement.requestFullscreen) { // Verifico se il browser supporta la modalità a schermo intero e attivo la modalità a schermo intero
-    videoElement.requestFullscreen().catch(err => { // Gestisco eventuali errori durante l'attivazione della modalità a schermo intero
-    console.error("Error attempting to enable full-screen mode: ${err.message} (${err.name})"); // Stampo un messaggio di errore nella console
-  });
-  }
-  };
-
-  return ( // Ritorno il codice JSX del componente VideoPlayer
-  <>
-   {/* Aggiungo il tag video con il riferimento al tag video e le proprietà src e controls */}
-  <video ref={videoRef} src={src} controls={controls} style={{ width: '50%' }}>   {/*Aggiungo un pulsante per attivare la modalità a schermo intero */}
-  Il tuo browser non supporta il tag video.
-  </video>
-  <button onClick={handleFullScreen}>Fullscreen</button> 
-  </>
+ 
+// Definizione del componente VideoPlayer come funzione di tipo React.FC
+const VideoPlayer: FC<VideoPlayerProps> = ({ url }) => {
+  return (
+    <div className='player-wrapper'>
+    <ReactPlayer
+      url={url}
+      className='react-player'
+      playing
+      width='100%'
+      height='100%'
+      controls={true}
+      light={false}
+      pip={true}
+      config={{
+        youtube: {
+          playerVars: { showinfo: 1 }
+        },
+        facebook: {
+          appId: '1234567890' // Replace with your Facebook app ID if necessary
+        }
+      }
+    }
+    />
+    </div>
   );
 };
 
 export default VideoPlayer;
-
 

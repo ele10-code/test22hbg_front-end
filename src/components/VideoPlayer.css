@@ -1,10 +1,26 @@
 /* src/components/VideoPlayer.css */
-.video-normal {
-  width: 50%; /* Per la modalità normale */
-  height: auto; /* Mantiene il rapporto aspetto */
+.player-wrapper {
+  /* Adatta il wrapper del player video alla dimensione desiderata */
+  width: 70%; /* Ad esempio, il 70% della larghezza dell'area genitore */
+  height: 500px; /* Altezza fissa per il player video, oppure usa vh per un'altezza relativa alla viewport */
+  
+  /* Centra il wrapper del player se la larghezza è inferiore a 100% */
+  margin-right: auto;
+  margin-left: auto;
+  
+  /* Aggiungi un po' di ombra per un effetto elevato, se desiderato */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  
+  /* Se vuoi bordi arrotondati */
+  border-radius: 8px; 
+  
+  /* Per garantire che il contenuto si adatti all'interno del wrapper */
+  overflow: hidden; 
 }
 
-.video-fullscreen {
-  width: 100%; /* Per la modalità ingrandita */
-  height: auto; /* Mantiene il rapporto aspetto */
+.react-player {
+  /* Questi sono per lo stile del player interno e non devono essere modificati, 
+     ReactPlayer si adatta automaticamente alle dimensioni del suo contenitore */
+  width: 100%;
+  height: 100%;
 }

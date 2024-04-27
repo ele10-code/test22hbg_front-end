@@ -1,47 +1,118 @@
-.App {
-  text-align: center;
+/* src/App.css */
+
+/* Reset e basi */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font moderno */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to bottom right, #4e54c8, #8f94fb); /* Gradient Background */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#root, .App {
+  height: 100%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 
 .app-container {
-  text-align: center; /* Centra i contenuti */
-  margin-top: 20px; /* Spazio sopra */
-  margin-bottom: 20px; /* Spazio sotto */
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 50px;
+  color: #f7f7f7;
 }
 
+.video-container {
+  width: 70%;
+  background: rgba(255, 255, 255, 0.1); /* Translucent background */
+  backdrop-filter: blur(5px); /* Blur effect for the background */
+  padding: 20px;
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  margin: 20px;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.search-box {
+  width: 25%;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  margin: 20px;
+}
+
+.search-box-title {
+  font-size: 1.8rem;
+  color: #282c34;
+  margin-bottom: 1rem;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.search-input, .search-button {
+  width: 100%; /* Full width of the container */
+  margin-bottom: 10px;
+}
+
+.search-input {
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #8f94fb; /* Focus color */
+}
+
+.search-button {
+  padding: 12px 20px;
+  background-color: #4e54c8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #6c63ff;
+}
+
+.search-button:disabled {
+  background-color: #cccccc;
+}
+
+.radio-list-item {
+  background: rgba(255, 255, 255, 0.8); /* Semi-translucent white */
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loading-text {
+  font-style: italic;
+}
+
+/* Aggiungi stili per altri stati o dispositivi se necessario */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .video-container, .search-box {
+    width: 90%;
+    margin: 10px 0;
   }
 }
