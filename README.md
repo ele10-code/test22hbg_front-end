@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+## Documentazione per l'Esecuzione Locale dell'Applicazione
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Requisiti Preliminari
+Per eseguire l'applicazione localmente, assicurati di avere installato:
+- [Node.js](https://nodejs.org/en/) (versione LTS consigliata)
+- [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/), che generalmente viene installato insieme a Node.js.
 
-## Available Scripts
+### Clonazione e Installazione delle Dipendenze
+1. Clona il repository del progetto dal tuo sistema di versionamento (ad esempio, GitHub).
+   ```bash
+   git clone [URL del repository]
+   cd [nome del progetto]
+   ```
+2. Installa le dipendenze del progetto utilizzando npm o yarn. Questo comando legge il file `package.json` e installa tutte le librerie necessarie.
+   ```bash
+   npm install
+   # oppure se usi yarn
+   yarn install
+   ```
 
-In the project directory, you can run:
+### Avvio dell'Applicazione
+Dopo aver installato le dipendenze, puoi avviare l'applicazione in modalità di sviluppo.
+```bash
+npm start
+# oppure
+yarn start
+```
+Questo comando avvia un server di sviluppo e apre il browser all'indirizzo [http://localhost:3000](http://localhost:3000). L'applicazione sarà ora in esecuzione e pronta per essere utilizzata localmente.
 
-### `npm start`
+### Tecnologie e Librerie Utilizzate
+- **React**: Una libreria JavaScript per la costruzione di interfacce utente, utilizzata per gestire la vista e lo stato dell'applicazione.
+- **axios**: Una libreria JavaScript per effettuare richieste HTTP da browser e Node.js, usata per comunicare con l'API pubblica.
+- **react-router-dom**: Libreria per la gestione delle route in applicazioni web React, utilizzata per navigare tra le pagine senza ricaricare il browser.
+- **Node.js**: Ambiente di esecuzione per JavaScript lato server, usato per gestire dipendenze e script di esecuzione dell'applicazione.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Integrazione con l'API Pubblica
+L'applicazione utilizza axios per effettuare chiamate all'API pubblica per ottenere dati sulle stazioni radio. Queste richieste sono autenticate tramite un token inserito negli header delle richieste HTTP. La risposta, tipicamente in formato JSON, viene poi processata e utilizzata per popolare l'interfaccia utente con informazioni sulle stazioni radio e i relativi stream.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Implementazione del Player Audio/Video
+Il player audio/video è implementato utilizzando il tag HTML5 `<audio>` o `<video>`. Questo permette una facile integrazione di funzionalità multimediali all'interno dell'applicazione web. Gli URL degli stream ottenuti dall'API vengono passati come sorgente a questi tag, consentendo agli utenti di riprodurre direttamente i contenuti media senza bisogno di ulteriori plugin o estensioni.
 
-### `npm test`
+### Gestione Errori e Sicurezza
+La gestione degli errori durante le chiamate API è essenziale per un'applicazione robusta. L'applicazione cattura e gestisce errori quali la mancata risposta dell'API o dati non validi, informando l'utente mediante messaggi di errore appropriati. Inoltre, le chiavi API e i token di autenticazione sono gestiti in modo sicuro per evitare esposizioni accidentali.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Questi passaggi dovrebbero fornirti una base solida per configurare e eseguire l'applicazione localmente, oltre a comprendere le tecnologie e le strategie implementative utilizzate.
