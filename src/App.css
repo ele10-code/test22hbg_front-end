@@ -1,4 +1,40 @@
 /* src/App.css */
+/* App.css */
+.App {
+  font-family: Arial, sans-serif; /* Usa un font pulito e moderno */
+  color: #333; /* Colore del testo scuro per migliore leggibilità */
+  background-color: #a8a8e2; /* Sfondo leggero */
+  padding: 10px;
+  max-width: 8000px; /* Limita la larghezza massima del contenuto */
+  margin: auto; /* Centra il contenuto nella pagina */
+  text-align: center; /* Centra il testo */
+}
+
+.navigation-links {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* Centra i link orizzontalmente */
+  gap: 10px; /* Distanza tra i link */
+}
+
+.nav-link {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white; /* Colore del testo */
+  background-color: #6200ea; /* Colore di sfondo */
+  text-decoration: none; /* Rimuove il sottolineato */
+  border-radius: 5px; /* Angoli arrotondati */
+  transition: background-color 0.3s; /* Transizione per hover */
+}
+
+.nav-link:hover {
+  background-color: #3700b3; /* Cambia colore quando il mouse è sopra */
+}
+
+h1 {
+  color: #6200ea; /* Colore per il titolo principale */
+}
+
 
 /* Reset e basi */
 * {
@@ -43,16 +79,6 @@ html, body {
   padding: 10px; /* Optional: Aggiunge padding per migliorare la leggibilità */
 }
 
-
-/* .search-box {
-  width: 25%;
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  text-align: left;
-  margin: 20px;
-} */
 
 .search-box-title {
   font-size: 1.8rem;
@@ -172,6 +198,51 @@ html, body {
   justify-content: space-between; /* Separa gli elementi */
   align-items: start; /* Allinea gli elementi all'inizio del contenitore */
   padding: 20px; /* Aggiungi spazio intorno */
+}
+
+/* stili per login*/
+.login-form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form h2 {
+  color: #6200ea;
+}
+
+.login-form .form-field {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.login-form .form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-form .form-submit {
+  width: 100%;
+  padding: 10px;
+  background-color: #6200ea;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.login-form .form-submit:hover {
+  background-color: #3700b3;
 }
 
 @media (max-width: 768px) {
