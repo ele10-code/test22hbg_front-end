@@ -1,77 +1,129 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import '../App.css';
 
-// Componente per la registrazione di un nuovo utente tramite un form
+// Componente per la registrazione di un utente tramite un form 
 const RegistrationForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
-
-  const navigate = useNavigate(); // Crea un'istanza di navigate
-
-  // Funzione per inviare i dati del form al server per la registrazione
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setError(null); // Reset dell'errore precedente
-
-    // Qui inserisci l'endpoint effettivo del tuo server API per la registrazione
-    const API_ENDPOINT = `${process.env.REACT_APP_API_URL}`;
-
-    try {
-      // Invio dei dati al server
-      const response = await axios.post(`${API_ENDPOINT}`, { email, password });
-
-      // Gestisci la risposta come necessario
-      // Ad esempio, potresti voler salvare il token di autenticazione:
-      console.log(response); // Aggiungi questo per vedere la risposta nel console.log
-      localStorage.setItem('token', response.data.token); // Simulazione di salvataggio token
-
-      // Redirect verso la dashboard, home page, o altro
-      //window.location.href = '/dashboard';
-      
-      // Dopo un successo nella registrazione:
-      localStorage.setItem('token', response.data.token);
-      navigate('/video'); // Usa navigate per reindirizzare l'utente alla pagina video
-
-    } catch (err) {
-      // Gestione degli errori, ad esempio errori di validazione o di connessione
-      if (err.response) {
-        // Gli errori rispondono con una risposta dal server
-        setError(err.response.data.message);
-      } else if (err.request) {
-        // La richiesta è stata inviata ma non si è ricevuta risposta dal server (es. timeout)
-        setError('Nessuna risposta dal server.');
-      } else {
-        // Qualcosa è andato storto nella configurazione della richiesta
-        setError('Errore nella richiesta di registrazione.');
-      }
-    }
+  const [userDetails, setUserDetails] = useState({ // Inizializza lo stato con i dettagli dell'utente
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+  const [error, setError] = useState(null); // Inizializza lo stato per gli errori
+  const navigate = useNavigate(); // Hook per la navigazione tra le pagine
+  const { login } = useAuth();  // Utilizza login per aggiornare lo stato di autenticazione
+  const handleChange = (e) => { // Funzione per gestire i cambiamenti nei campi del form 
+    const { name, value } = e.target; // Estrai il nome e il valore dall'evento
+    setUserDetails(prevDetails => ({ // Aggiorna lo stato con i nuovi dettagli
+      ...prevDetails, 
+      [name]: value
+    }));
   };
+  // Verifica se i campi del form sono validi per la registrazione
+  const canSubmit = 
+    userDetails.password === userDetails.confirmPassword &&
+    userDetails.email &&
+    userDetails.password &&
+    userDetails.firstName &&
+    userDetails.lastName;
+
+    // Funzione per inviare i dati del form al server per la registrazione
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      console.log("Attempting to submit:", userDetails);
+      setError(null);
+      if (canSubmit) {
+        console.log("Form is valid, submitting...");
+        setTimeout(() => {
+          // Simula la generazione di un token e il salvataggio in localStorage
+          const simulatedToken = "simulated_token_" + Date.now();
+          localStorage.setItem('token', simulatedToken);
+          console.log("Registration successful, token:", simulatedToken);
+  
+          // Logga l'utente
+          login();  // Aggiorna lo stato di autenticazione nel contesto
+  
+          // Naviga alla pagina video o dashboard
+          console.log("Navigating to /video");
+          navigate('/video');
+        }, 1000);  // Simula un ritardo di rete
+      } else {
+        setError('Please verify that the fields are correct.');
+      }
+    };
+    
+    
 
   return (
     <div className="form-container">
-      <h2 className="form-title">Registrazione</h2>
-      <form onSubmit={handleSubmit}>
-        {error && <div>{error}</div>}
-        <label htmlFor="email" className="form-label">Email:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="form-input"
-        />
-        <label htmlFor="password" className="form-label">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="form-input"
-        />
-        <button type="submit" className="form-submit">Registrati</button>
+      <h2 className="form-title">Crea il tuo Account</h2>
+      {error && <div className="error-message">{error}</div>}
+      <form onSubmit={handleSubmit} className="registration-form">
+        <div className="form-field">
+          <label htmlFor="firstName" className="form-label">Nome:</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            value={userDetails.firstName}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="lastName" className="form-label">Cognome:</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            value={userDetails.lastName}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="email" className="form-label">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={userDetails.email}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="password" className="form-label">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={userDetails.password}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="confirmPassword" className="form-label">Conferma Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            value={userDetails.confirmPassword}
+            onChange={handleChange}
+            className="form-input"
+            required
+          />
+        </div>
+        <button type="submit" className="form-submit" disabled={!canSubmit}>Registrati</button>
       </form>
     </div>
   );

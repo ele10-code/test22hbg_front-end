@@ -20,3 +20,65 @@ Infine, per visualizzare le informazioni del profilo utente dopo che hanno effet
 
 
 npm install -g ngrok
+
+
+
+// file App.tsx con video player di you tube
+
+import React, { useState, useRef, useContext } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from './app/store';
+import VideoPlayer from './components/VideoPlayer';
+import SearchComponent from './components/SearchComponent';
+import LoginForm from './components/LoginForm';
+import RegistrationForm from './components/RegistrationForm';
+import { AuthContext } from './context/AuthContext';
+import './App.css';
+
+function App() {
+  const [selectedRadioUrl, setSelectedRadioUrl] = useState('');
+  const videoPlayerRef = useRef<HTMLVideoElement>(null);
+  const videoURL = useSelector((state: RootState) => state.video.url);
+  const { isLoggedIn } = useContext(AuthContext);
+
+  const handleStreamSelect = (url: string) => {
+    setSelectedRadioUrl(url);
+  };
+  const handleRadioSelect = (url: string) => {
+    setSelectedRadioUrl(url);
+  };
+  
+
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <h1>Benvenuto nell'App live-streaming audio e video</h1>
+        <Routes>
+          <Route path="/" element={!isLoggedIn() ? <RegistrationForm /> : (
+            <>
+              <VideoPlayer url={videoURL} /> {/* Video di YouTube */}
+              {selectedRadioUrl && <VideoPlayer url={selectedRadioUrl} />} {/* Player per la radio selezionata */}
+            </>
+          )} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/video" element={
+            <div className="video-page-container">
+              <VideoPlayer url={videoURL} /> {/* Video di YouTube */}
+              <div className="search-box">
+                <h2 className="search-box-title">Cerca Radio</h2>
+                <SearchComponent onStreamSelect={handleRadioSelect} />
+              </div>
+              {selectedRadioUrl && (
+                <div className="radio-player-container">
+                  <VideoPlayer url={selectedRadioUrl} /> {/* Player per la radio selezionata */}
+                </div>
+              )}
+            </div>
+          } />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}
+export default App;
