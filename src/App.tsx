@@ -4,6 +4,7 @@ import VideoPlayer from './components/VideoPlayer';
 import SearchComponent from './components/SearchComponent';
 import LoginForm from './components/LoginForm';
 import RegistrationForm from './components/RegistrationForm';
+import LiveStreamPage from './pages/LiveStreamPage';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import './App.css';
 

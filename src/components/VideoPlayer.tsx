@@ -2,6 +2,7 @@
 // Importazione delle librerie necessarie
 import React, { FC } from 'react';
 import ReactPlayer from 'react-player';
+import ShareButtons from './ShareButtons';
 import './VideoPlayer.css'; // Importazione del file CSS per lo stile del componente
  
 // Definizione delle proprietà del componente VideoPlayer
@@ -32,6 +33,7 @@ const VideoPlayer: FC<VideoPlayerProps> = ({ url }) => {
       }
     }
     />
+    <ShareButtons url={url} />
     </div>
   );
 };

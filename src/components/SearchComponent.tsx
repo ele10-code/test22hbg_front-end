@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import ShareButtons from './ShareButtons'; 
+
 import '../App.css';
 
 // Definizione delle interfacce per le stazioni radio e gli stream
@@ -75,9 +77,13 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onStreamSelect }) => 
               <img src={radio.logo} alt={radio.name} style={{ width: '50px', height: '50px' }} />
               <strong>{radio.name}</strong> - {radio.slogan}
               {radio.streams.map(stream => (
-                <button key={stream.id} onClick={() => handleStreamSelect(stream.url)}>
-                  Play Stream
-                </button>
+                <div key={stream.id}>
+                  <button onClick={() => handleStreamSelect(stream.url)}>
+                    Play Stream
+                  </button>
+                  {/* Aggiungi i bottoni di condivisione qui */}
+                  <ShareButtons url={stream.url} />
+                </div>
               ))}
               <div>Website: <a href={radio.website} target="_blank" rel="noopener noreferrer">{radio.website}</a></div>
             </li>
@@ -86,6 +92,7 @@ const SearchComponent: React.FC<SearchComponentProps> = ({ onStreamSelect }) => 
       )}
     </div>
   );
+  
 };
 
 export default SearchComponent;

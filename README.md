@@ -25,7 +25,7 @@ npm start
 # oppure
 yarn start
 ```
-Questo comando avvia un server di sviluppo e apre il browser all'indirizzo [http://localhost:3000](http://localhost:3000). L'applicazione sarà ora in esecuzione e pronta per essere utilizzata localmente.
+Questo comando avvia un server di sviluppo e apre il browser all'indirizzo [http://localhost:3001](http://localhost:3001). L'applicazione sarà ora in esecuzione e pronta per essere utilizzata localmente.
 
 ### Tecnologie e Librerie Utilizzate
 - **React**: Una libreria JavaScript per la costruzione di interfacce utente, utilizzata per gestire la vista e lo stato dell'applicazione.
